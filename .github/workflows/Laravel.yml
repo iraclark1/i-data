@@ -25,6 +25,7 @@ jobs:
         mv ./blog/.gitattributes  ./.gitattributes
         mv ./blog/.gitignore  ./.gitignore
         echo "./blog/*" >> .gitignore
+        echo "README.md" >> .gitignore
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
@@ -39,6 +40,7 @@ jobs:
         git config --local user.email github-actions[bot]@users.noreply.github.com
         git status
         git add ./
+        git checkout -- README.md
         git commit -m "init laravel 10.*"
         git log
         git push origin
